@@ -1,23 +1,30 @@
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 public class Main {
-    public static void main(String[] args) {
+    public static <Animale> void main(String[] args) {
         Set<String> animali = createSet();
-        System.out.println(animali);
-        String animale = "leopardo";
+        String Animale = "cane";
 
-        if(animali.contains(animale)){
-            System.out.println("L'animale " + animale + " è presente nel set.");
-        } else {
-            System.out.println("L'animale " + animale + " non è presente nel set.");
+        Iterator<String> iterator = animali.iterator();
+        while (iterator.hasNext()) {
+            String stringa = iterator.next();
+            if(stringa.equals(animali)){
+                iterator.remove();
+            }
+            System.out.println(stringa);
+        }
+        System.out.println(animali);
+        animali.clear();
+        System.out.println(animali);
+        }
+
+        public static Set<String> createSet () {
+            Set<String> animali = new HashSet<>();
+            animali.add("nibbio");
+            animali.add("coleottero");
+            animali.add("cane");
+            return animali;
         }
     }
-    public static Set<String> createSet(){
-        Set<String> animali = new HashSet<>() ;
-        animali.add("nibbio");
-        animali.add("coleottero");
-        animali.add("cane");
-        return animali;
-    }
-}
